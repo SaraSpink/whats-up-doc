@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-exports.apiKey = "1c2b9da6e9ab0586e608a21396513a66";
+exports.apiKey = "bb6d824019641768d2341bd792eef6ae";
 
 },{}],2:[function(require,module,exports){
 'use strict';
@@ -7,13 +7,13 @@ exports.apiKey = "1c2b9da6e9ab0586e608a21396513a66";
 var apiKey = require('./../.env').apiKey;
 
 $(document).ready(function () {
-  $('#weatherLocation').click(function () {
-    var city = $('#location').val();
-    $('#location').val("");
+  $('#complaintButton').click(function () {
+    var complaint = $('#complaint').val();
+    $('#complaint').val("");
 
     var promise = new Promise(function (resolve, reject) {
       var request = new XMLHttpRequest();
-      var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=Imperial&appid=' + apiKey;
+      var url = 'https://api.betterdoctor.com/2016-03-01/doctors?query=' + complaint + '&location=45.4814320%2C-122.8016600%2C20&sort=last-name-asc&skip=0&limit=10&user_key=' + apiKey;
       request.onload = function () {
         if (this.status === 200) {
           resolve(request.response);
@@ -28,8 +28,8 @@ $(document).ready(function () {
     promise.then(function (response) {
       var body = JSON.parse(response);
       debugger;
-      $('.showHumidity').text('The humidity in ' + city + ' is ' + body.main.humidity + '%');
-      $('.showTemp').text('The temperature in Fahrenheit is ' + body.main.temp + ' degrees.');
+      $('.showDoctors').text('Here are some doctors that treat ' + complaint + '.');
+      // $('.showTemp').text(`The temperature in Fahrenheit is ${body.main.temp} degrees.`);
     }, function (error) {
       $('.showErrors').text('There was an error processing your request: ' + error.message);
     });

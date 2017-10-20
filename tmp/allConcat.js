@@ -1,13 +1,13 @@
 let apiKey = require('./../.env').apiKey;
 
 $(document).ready(function() {
-  $('#weatherLocation').click(function() {
-    let city = $('#location').val();
-    $('#location').val("");
+  $('#complaintButton').click(function() {
+    let complaint = $('#complaint').val();
+    $('#complaint').val("");
 
       let promise = new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=Imperial&appid=${apiKey}`;
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?query=${complaint}&location=45.4814320%2C-122.8016600%2C20&sort=last-name-asc&skip=0&limit=10&user_key=${apiKey}`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -22,8 +22,8 @@ $(document).ready(function() {
     promise.then(function(response) {
       let body = JSON.parse(response);
       debugger;
-        $('.showHumidity').text(`The humidity in ${city} is ${body.main.humidity}%`);
-        $('.showTemp').text(`The temperature in Fahrenheit is ${body.main.temp} degrees.`);
+        $('.showDoctors').text(`Here are some doctors that treat ${complaint}.`);
+        // $('.showTemp').text(`The temperature in Fahrenheit is ${body.main.temp} degrees.`);
       }, function(error) {
         $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
