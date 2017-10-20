@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     var promise = new Promise(function (resolve, reject) {
       var request = new XMLHttpRequest();
-      var url = 'https://api.betterdoctor.com/2016-03-01/doctors?query=' + complaint + '&location=45.4814320%2C-122.8016600%2C20&sort=last-name-asc&skip=0&limit=10&user_key=' + apiKey;
+      var url = 'https://api.betterdoctor.com/2016-03-01/doctors?query=' + complaint + '&location=45.4814320%2C-122.8016600%2C20&sort=rating-asc&skip=0&limit=40&user_key=' + apiKey;
       request.onload = function () {
         if (this.status === 200) {
           resolve(request.response);
@@ -29,6 +29,7 @@ $(document).ready(function () {
       var body = JSON.parse(response);
       debugger;
       $('.showDoctors').text('Here are some doctors that treat ' + complaint + '.');
+      $('#');
       // $('.showTemp').text(`The temperature in Fahrenheit is ${body.main.temp} degrees.`);
     }, function (error) {
       $('.showErrors').text('There was an error processing your request: ' + error.message);
