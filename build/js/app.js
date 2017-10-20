@@ -27,9 +27,17 @@ $(document).ready(function () {
 
     promise.then(function (response) {
       var body = JSON.parse(response);
-      debugger;
+      var docArray = [];
+      var docNames = [];
+      body.data.forEach(function (docs) {
+        docArray.push(docs.profile);
+      });
+      docArray.forEach(function (names) {
+        docNames.push(names.first_name);
+      });
+
       $('.showDoctors').text('Here are some doctors that treat ' + complaint + '.');
-      $('#');
+      $('.showDoctors').append('<li>' + docNames + '</li>');
       // $('.showTemp').text(`The temperature in Fahrenheit is ${body.main.temp} degrees.`);
     }, function (error) {
       $('.showErrors').text('There was an error processing your request: ' + error.message);
