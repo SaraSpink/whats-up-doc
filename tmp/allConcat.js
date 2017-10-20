@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 
         docArray.forEach(function(names) {
-        $('#showDoctorNames').append(`<li> ${names.first_name, names.last_name} </li>`)
+        $('#showDoctorNames').append(`<li> ${names.first_name} ${names.last_name} </li>`)
           })
         // $('.showTemp').text(`The temperature in Fahrenheit is ${body.main.temp} degrees.`);
       }, function(error) {
