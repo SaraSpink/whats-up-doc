@@ -25,7 +25,7 @@ $(document).ready(function() {
       let docArray = []
       let docNames = []
       let addressArr = []
-      body.data.forEach(function(docs) {
+      body.data.forEach(function(docs, address) {
         docArray.push(docs.profile)
         })
 
@@ -36,14 +36,14 @@ $(document).ready(function() {
       })
 
         $('.showDoctors').text(`Here are some doctors that treat ${complaint}.`);
-        debugger;
+
 
         docArray.forEach(function(names) {
         $('#showDoctorNames').append(`<li> ${names.first_name} ${names.last_name} </li>`)
         })
 
         addressArr.forEach(function(address) {
-          $('#showDoctorNames').append(`<li> ${address.city} </li>`)
+          $('#showDoctorAddress').append(`<li> ${address.street} <br> ${address.city}, ${address.state} ${address.zip} </li>`)
         })
 
       }, function(error) {
