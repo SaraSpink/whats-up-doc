@@ -1,0 +1,22 @@
+{
+  "name": "spink_api",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Sara Spink <spinkbot@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "moment": "^2.19.1",
+    "bootstrap": "v4.0.0-beta"
+  }
+}
