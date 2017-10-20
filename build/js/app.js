@@ -29,18 +29,27 @@ $(document).ready(function () {
       var body = JSON.parse(response);
       var docArray = [];
       var docNames = [];
+      var addressArr = [];
       body.data.forEach(function (docs) {
         docArray.push(docs.profile);
       });
-      docArray.forEach(function (names) {
-        docNames.push(names.first_name, names.last_name);
+
+      body.data.forEach(function (address) {
+        address.practices.forEach(function (details) {
+          addressArr.push(details.visit_address);
+        });
       });
+
       $('.showDoctors').text('Here are some doctors that treat ' + complaint + '.');
+      debugger;
 
       docArray.forEach(function (names) {
         $('#showDoctorNames').append('<li> ' + names.first_name + ' ' + names.last_name + ' </li>');
       });
-      // $('.showTemp').text(`The temperature in Fahrenheit is ${body.main.temp} degrees.`);
+
+      addressArr.forEach(function (address) {
+        $('#showDoctorNames').append('<li> ' + address.city + ' </li>');
+      });
     }, function (error) {
       $('.showErrors').text('There was an error processing your request: ' + error.message);
     });
