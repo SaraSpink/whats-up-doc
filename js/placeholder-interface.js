@@ -21,6 +21,7 @@ $(document).ready(function() {
 
     promise.then(function(response) {
       let body = JSON.parse(response);
+      debugger;
         $('.showHumidity').text(`The humidity in ${city} is ${body.main.humidity}%`);
         $('.showTemp').text(`The temperature in Fahrenheit is ${body.main.temp} degrees.`);
       }, function(error) {
