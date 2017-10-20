@@ -25,7 +25,7 @@ $(document).ready(function() {
       let docArray = []
       let docNames = []
       let addressArr = []
-      body.data.forEach(function(docs, address) {
+      body.data.forEach(function(docs) {
         docArray.push(docs.profile)
         })
 

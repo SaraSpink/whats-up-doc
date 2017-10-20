@@ -30,7 +30,7 @@ $(document).ready(function () {
       var docArray = [];
       var docNames = [];
       var addressArr = [];
-      body.data.forEach(function (docs, address) {
+      body.data.forEach(function (docs) {
         docArray.push(docs.profile);
       });
 
