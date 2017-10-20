@@ -14,11 +14,27 @@
   <body>
     <div class="container">
       <h1>Find a doctor!</h1>
-      <label for="complaint">Enter a complaint:</label>
-      <input id="complaint" type="text">
-      <button class="btn btn-info" id="complaintButton">Help me, Doc!</button>
-      <div class="errors"></div>
-      <div class="showDoctors"><ol id="listOfDoctors"></ol></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="complaint">Enter a complaint:</label>
+          <input id="complaint" type="text">
+          <button class="btn btn-info" id="complaintButton">Help me, Doc!</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="showDoctors"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <ol id="showDoctorNames"></ol>
+        </div>
+        <div class="col-sm-6">
+          <div class="errors"></div>
+        </div>
+      </div>
+
 
     </div>
   </body>
