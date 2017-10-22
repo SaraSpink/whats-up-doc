@@ -39,16 +39,19 @@ $(document).ready(function () {
           addressArr.push(details.visit_address);
         });
       });
+      if (body.data.length != 0) {
+        $('.showDoctors').text('Here are some doctors that treat ' + complaint + '.');
 
-      $('.showDoctors').text('Here are some doctors that treat ' + complaint + '.');
+        docArray.forEach(function (names) {
+          $('#showDoctorNames').append('<li> ' + names.first_name + ' ' + names.last_name + ' </li>');
+        });
 
-      docArray.forEach(function (names) {
-        $('#showDoctorNames').append('<li> ' + names.first_name + ' ' + names.last_name + ' </li>');
-      });
-
-      addressArr.forEach(function (address) {
-        $('#showDoctorAddress').append('<li> ' + address.street + ' <br> ' + address.city + ', ' + address.state + ' ' + address.zip + ' </li>');
-      });
+        addressArr.forEach(function (address) {
+          $('#showDoctorAddress').append('<li> ' + address.street + ' <br> ' + address.city + ', ' + address.state + ' ' + address.zip + ' </li>');
+        });
+      } else {
+        $("#showDoctorNames").append('There are no doctors that treat ' + complaint + ', please modify your search terms');
+      }
     }, function (error) {
       $('.showErrors').text('There was an error processing your request: ' + error.message);
     });
