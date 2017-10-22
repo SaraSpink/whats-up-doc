@@ -23,6 +23,8 @@
 ## Stretch Goals:
 User can enter any location to search for doctors
 
+says "loading while data is loading"
+
 ## Support and contact details
 
 _If you have any updates or suggestions please make a contribution to this repository, or email Sara Spink - spinkbot@gmail.com_
