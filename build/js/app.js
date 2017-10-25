@@ -28,10 +28,8 @@ $(document).ready(function () {
     promise.then(function (response) {
       var body = JSON.parse(response);
       var docArray = [];
-      var docNames = [];
-      var addressArr = [];
-      body.data.forEach(function (doc) {
 
+      body.data.forEach(function (doc) {
         var name = doc.profile.first_name + ' ' + doc.profile.last_name + ', ' + doc.profile.title;
         var address = doc.practices[0].visit_address;
         var formattedAddress = address.street + ' <br> ' + address.city + ' <br> ' + address.state + ', ' + address.zip;
@@ -46,12 +44,6 @@ $(document).ready(function () {
         });
       });
 
-      //
-      // body.data.forEach(function(address) {
-      //   address.ractices.forEach(function(details) {
-      //     addressArr.push(details.visit_address)
-
-
       console.log(docArray);
       $('#showDoctorNames').text("");
       if (body.data.length != 0) {
@@ -60,11 +52,6 @@ $(document).ready(function () {
         docArray.forEach(function (doctor) {
           $('#showDoctorNames').append('<li> <b>' + doctor.name + '</b> <br> ' + doctor.address + ' <br> ' + doctor.phone + ' </li>');
         });
-        //
-        // addressArr.forEach(function(address) {
-        //   $('#showDoctorAddress').append(`<li> ${address.street} <br> ${address.city}, ${address.state} ${address.zip} </li>`)
-        //
-        // })
       } else {
         $(".showDoctors").text('There are no doctors that treat ' + complaint + ', please modify your search terms');
       }

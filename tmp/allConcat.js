@@ -23,27 +23,20 @@ $(document).ready(function() {
     promise.then(function(response) {
       let body = JSON.parse(response);
       let docArray = []
-      let docNames = []
-      let addressArr = []
-      body.data.forEach(function(doc) {
 
-        let name = `${doc.profile.first_name} ${doc.profile.last_name}, ${doc.profile.title}`
-        let address = doc.practices[0].visit_address
-        let formattedAddress =  `${address.street} <br> ${address.city} <br> ${address.state}, ${address.zip}`
-        let phone = `${doc.practices[0].phones.find(function(phone) {return phone.type === "landline"}).number}`
+      body.data.forEach(function(doc) {
+      let name = `${doc.profile.first_name} ${doc.profile.last_name}, ${doc.profile.title}`
+      let address = doc.practices[0].visit_address
+      let formattedAddress =  `${address.street} <br> ${address.city} <br> ${address.state}, ${address.zip}`
+      let phone = `${doc.practices[0].phones.find(function(phone) {return phone.type === "landline"}).number}`
 
 
         docArray.push({
           name: name,
           address: formattedAddress,
           phone: phone,
+          })
         })
-        })
-
-      //
-      // body.data.forEach(function(address) {
-      //   address.ractices.forEach(function(details) {
-      //     addressArr.push(details.visit_address)
 
 
       console.log(docArray)
@@ -51,18 +44,13 @@ $(document).ready(function() {
       if(body.data.length != 0) {
         $('.showDoctors').text(`Here are some doctors that treat ${complaint}.`);
 
-
         docArray.forEach(function(doctor) {
-        $('#showDoctorNames').append(`<li> <b>${doctor.name}</b> <br> ${doctor.address} <br> ${doctor.phone} </li>`)
-        })
-        //
-        // addressArr.forEach(function(address) {
-        //   $('#showDoctorAddress').append(`<li> ${address.street} <br> ${address.city}, ${address.state} ${address.zip} </li>`)
-        //
-        // })
-      } else {
-        $(".showDoctors").text(`There are no doctors that treat ${complaint}, please modify your search terms`);
-      }
+          $('#showDoctorNames').append(`<li> <b>${doctor.name}</b> <br> ${doctor.address} <br> ${doctor.phone} </li>`)
+          })
+
+        } else {
+          $(".showDoctors").text(`There are no doctors that treat ${complaint}, please modify your search terms`);
+        }
 
       }, function(error) {
         $('.showErrors').text(`There was an error processing your request: ${error.message}`);
