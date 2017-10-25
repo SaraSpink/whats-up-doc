@@ -19,10 +19,10 @@ var Doctor = exports.Doctor = function () {
 
   _createClass(Doctor, [{
     key: "apiRequest",
-    value: function apiRequest(complaint, apiKey) {
+    value: function apiRequest(searchName, complaint, apiKey) {
       var promise = new Promise(function (resolve, reject) {
         var request = new XMLHttpRequest();
-        var url = "https://api.betterdoctor.com/2016-03-01/doctors?query=" + complaint + "&location=45.4814320%2C-122.8016600%2C50&sort=rating-asc&skip=0&limit=40&user_key=" + apiKey;
+        var url = "https://api.betterdoctor.com/2016-03-01/doctors?name=" + searchName + "&query=" + complaint + "&location=45.4814320%2C-122.8016600%2C50&sort=rating-asc&skip=0&limit=40&user_key=" + apiKey;
         request.onload = function () {
           if (this.status === 200) {
             resolve(request.response);
@@ -84,8 +84,10 @@ $(document).ready(function () {
   $('#complaintButton').click(function () {
     var complaint = $('#complaint').val();
     $('#complaint').val("");
+    var searchName = $('#searchName').val();
+    $('#searchName').val("");
     var doctor = new _doctor.Doctor();
-    doctor.apiRequest(complaint, apiKey);
+    doctor.apiRequest(searchName, complaint, apiKey);
   });
 });
 
